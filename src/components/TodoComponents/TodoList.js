@@ -8,27 +8,32 @@ class TodoList extends React.Component {
   constructor(){
     super();
     this.state = {
-      todoItems: []
+      todoItems: [],
+      todoItem: ''
     };
   }
   
+  handleChanges = event => {
+    this.setState({ todoItem: event.target.value });
+  }
+
   addToList = event => {
     event.preventDefault();
 
     const newTodoItem = {
-      item: this.state.toDoItem,
+      item: this.state.todoItem,
       completed: false
     };
 
     this.setState({
-      todoItems: this.state.todoItems.push(newTodoItem)
+      todoItems: [...this.state.todoItems, newTodoItem]
     });
   }
 
   render(){
     return (
       <div className="todo-list">
-        <h1>To Do List:</h1>
+        <h1>{this.props.title}</h1>
         <ul>
           {this.state.todoItems.map((item,index) => (
             <Todo key={index} itemProp={item} />
@@ -37,6 +42,8 @@ class TodoList extends React.Component {
         <TodoForm 
           item={this.state.item}
           completed={this.state.completed}
+          handleChanges={this.handleChanges}
+          addToList={this.addToList}
         />
       </div>
     );
