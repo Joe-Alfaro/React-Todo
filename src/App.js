@@ -1,10 +1,8 @@
 import React from 'react';
 import TodoList from './components/TodoComponents/TodoList.js'
-import TodoForm from './components/TodoComponents/TodoForm.js'
 
 
 class App extends React.Component {
-  // you will need a place to store your state in this component.
   constructor(){
     super();
     this.state = {
@@ -16,9 +14,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="app-wrapper">
-        <h1>To Do List:</h1>
-        <TodoList />
-        <TodoForm />
+        <TodoList title="To Do List" />
       </div>
     );
   }

@@ -2,8 +2,8 @@ import React from 'react'
 
 import './Todo.css'
 
-const Todo = () => {
-  return <li className="todo"></li>
+const Todo = props => {
+  return <li className="todo">{props.todoItem}</li>
 };
 
 export default Todo;
